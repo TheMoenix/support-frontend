@@ -2,12 +2,14 @@ import { Layout, Button, Space, Typography, Flex, Switch, theme } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Language, Theme } from "../common/constants";
 import { MoonOutlined, SunOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const { Header } = Layout;
 const { Text } = Typography;
 
 export default function AppHeader() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const currentLanguage =
     (localStorage.getItem("language") as Language) || Language.ENGLISH;
@@ -33,13 +35,13 @@ export default function AppHeader() {
     <Header style={{ background: colorBgContainer }}>
       <Flex justify="space-between" align="center">
         <Space size="large">
-          <Text style={{ fontSize: "25px" }}>Support</Text>
+          <Text style={{ fontSize: "25px" }}>{t("title")}</Text>
           <Space>
             <Button type="link" onClick={() => navigate("/create")}>
-              Create Ticket
+              {t("createTicket")}
             </Button>
             <Button type="link" onClick={() => navigate("/list")}>
-              List Tickets
+              {t("listTickets")}
             </Button>
           </Space>
         </Space>

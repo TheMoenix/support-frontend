@@ -1,3 +1,9 @@
 {
-  "title": "Support"
+  "title": "Support",
+  "createTicket": "Create Ticket",
+  "listTickets": "List Tickets",
+  "listingTickets": "Listing Tickets",
+  "ticketId": "Ticket ID",
+  "editingTicket": "Editing Ticket ID",
+  "creatingNewTicket": "Creating New Ticket"
 }

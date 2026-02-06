@@ -1,3 +1,9 @@
 {
-  "title": "الدعم"
+  "title": "الدعم",
+  "createTicket": "إنشاء تذكرة",
+  "listTickets": "قائمة التذاكر",
+  "listingTickets": "عرض التذاكر",
+  "ticketId": "رقم التذكرة",
+  "editingTicket": "تعديل التذكرة رقم",
+  "creatingNewTicket": "إنشاء تذكرة جديدة"
 }
