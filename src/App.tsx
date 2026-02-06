@@ -1,18 +1,11 @@
-import { Flex, Typography } from "antd";
-
-const { Title } = Typography;
+import { BrowserRouter } from "react-router-dom";
+import { AppRoute } from "./Routes";
 
 function App() {
   return (
-    <Flex
-      justify="center"
-      align="center"
-      style={{
-        height: "100vh",
-      }}
-    >
-      <Title type="success">Hello World To My Support Platform</Title>
-    </Flex>
+    <BrowserRouter>
+      <AppRoute />
+    </BrowserRouter>
   );
 }
 
