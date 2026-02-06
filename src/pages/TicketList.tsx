@@ -4,13 +4,7 @@ const { Title } = Typography;
 
 function TicketList() {
   return (
-    <Flex
-      justify="center"
-      align="center"
-      style={{
-        height: "100vh",
-      }}
-    >
+    <Flex justify="center" align="center">
       <Title type="success">Listing Tickets</Title>
     </Flex>
   );

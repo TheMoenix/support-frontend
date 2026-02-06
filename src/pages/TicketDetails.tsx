@@ -7,13 +7,7 @@ function TicketDetails() {
   const ticketId = useParams().id;
 
   return (
-    <Flex
-      justify="center"
-      align="center"
-      style={{
-        height: "100vh",
-      }}
-    >
+    <Flex justify="center" align="center">
       <Title type="warning">Ticket ID: {ticketId}</Title>
     </Flex>
   );
