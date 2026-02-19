@@ -5,5 +5,32 @@
   "listingTickets": "Listing Tickets",
   "ticketId": "Ticket ID",
   "editingTicket": "Editing Ticket ID",
-  "creatingNewTicket": "Creating New Ticket"
+  "creatingNewTicket": "Creating New Ticket",
+  "table": {
+    "id": "ID",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "status": "Status",
+    "createdAt": "Created At"
+  },
+  "status": {
+    "open": "Open",
+    "inProgress": "In Progress",
+    "resolved": "Resolved",
+    "closed": "Closed"
+  },
+  "form": {
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message"
+  },
+  "message": {
+    "required": "This field is required",
+    "email_error": "Please enter a valid email address"
+  },
+  "button": {
+    "submit": "Submit"
+  }
 }
