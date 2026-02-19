@@ -6,6 +6,9 @@
   "ticketId": "رقم التذكرة",
   "editingTicket": "تعديل التذكرة رقم",
   "creatingNewTicket": "إنشاء تذكرة جديدة",
+  "ticketNotFound": "التذكرة غير موجودة",
+  "updatedAt": "تاريخ التحديث",
+  "updateStatus": "تحديث الحالة",
   "table": {
     "id": "المعرف",
     "name": "الاسم",
@@ -31,6 +34,7 @@
     "email_error": "يرجى إدخال عنوان بريد إلكتروني صالح"
   },
   "button": {
-    "submit": "إرسال"
+    "submit": "إرسال",
+    "update": "تحديث"
   }
 }

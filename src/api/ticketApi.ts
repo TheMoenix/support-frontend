@@ -16,6 +16,14 @@ export interface CreateTicketDto {
   message: string;
 }
 
+export interface UpdateTicketDto {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+  status?: "open" | "in-progress" | "resolved" | "closed";
+}
+
 const STORAGE_KEY = "support_tickets";
 
 const getTicketsFromStorage = (): Ticket[] => {
@@ -73,7 +81,7 @@ export const listTickets = async (): Promise<Ticket[]> => {
   );
 };
 
-export const getTicket = async (id: string): Promise<Ticket | null> => {
+export const getTicket = async (id: string): Promise<Ticket> => {
   await delay();
 
   const tickets = getTicketsFromStorage();
@@ -84,6 +92,31 @@ export const getTicket = async (id: string): Promise<Ticket | null> => {
   }
 
   return ticket;
+};
+
+export const updateTicket = async (
+  id: string,
+  data: UpdateTicketDto,
+): Promise<Ticket> => {
+  await delay();
+
+  const tickets = getTicketsFromStorage();
+  const ticketIndex = tickets.findIndex((t) => t.id === id);
+
+  if (ticketIndex === -1) {
+    throw new Error(`Ticket with ID ${id} not found`);
+  }
+
+  const updatedTicket: Ticket = {
+    ...tickets[ticketIndex],
+    ...data,
+    updatedAt: new Date().toISOString(),
+  };
+
+  tickets[ticketIndex] = updatedTicket;
+  saveTicketsToStorage(tickets);
+
+  return updatedTicket;
 };
 
 export const deleteTicket = async (id: string): Promise<void> => {

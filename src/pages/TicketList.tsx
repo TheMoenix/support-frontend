@@ -37,10 +37,7 @@ function TicketList() {
       key: "id",
       width: 200,
       render: (id: string) => (
-        <Link
-          onClick={() => navigate(`/tickets/${id}`)}
-          style={{ cursor: "pointer" }}
-        >
+        <Link onClick={() => navigate(`/${id}`)} style={{ cursor: "pointer" }}>
           {id}
         </Link>
       ),

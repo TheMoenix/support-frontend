@@ -6,6 +6,9 @@
   "ticketId": "Ticket ID",
   "editingTicket": "Editing Ticket ID",
   "creatingNewTicket": "Creating New Ticket",
+  "ticketNotFound": "Ticket not found",
+  "updatedAt": "Updated At",
+  "updateStatus": "Update Status",
   "table": {
     "id": "ID",
     "name": "Name",
@@ -31,6 +34,7 @@
     "email_error": "Please enter a valid email address"
   },
   "button": {
-    "submit": "Submit"
+    "submit": "Submit",
+    "update": "Update"
   }
 }
