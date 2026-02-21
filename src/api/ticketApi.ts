@@ -25,7 +25,7 @@ export const listTickets = async (): Promise<Ticket[]> => {
     throw new Error(`Failed to fetch tickets: ${response.statusText}`);
   }
 
-  return (await response.json()).tickets;
+  return response.json();
 };
 
 export const getTicket = async (id: string): Promise<Ticket> => {

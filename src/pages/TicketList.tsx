@@ -32,20 +32,17 @@ function TicketList() {
 
   const columns: ColumnsType<Ticket> = [
     {
-      title: t("table.id"),
-      dataIndex: "id",
-      key: "id",
-      width: 200,
-      render: (id: string) => (
-        <Link onClick={() => navigate(`/${id}`)} style={{ cursor: "pointer" }}>
-          {id}
-        </Link>
-      ),
-    },
-    {
       title: t("table.name"),
       dataIndex: "name",
       key: "name",
+      render: (name: string, record: Ticket) => (
+        <Link
+          onClick={() => navigate(`/${record.id}`)}
+          style={{ cursor: "pointer" }}
+        >
+          {name}
+        </Link>
+      ),
     },
     {
       title: t("table.email"),

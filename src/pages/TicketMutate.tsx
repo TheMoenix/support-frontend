@@ -1,5 +1,5 @@
-import { Button, Card, Col, Form, Input, Row } from "antd";
-import { useParams } from "react-router-dom";
+import { Button, Card, Col, Form, Input, message, Row } from "antd";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useForm } from "antd/es/form/Form";
 import { createTicket, type CreateTicketDto } from "../api/ticketApi";
@@ -7,23 +7,27 @@ import { createTicket, type CreateTicketDto } from "../api/ticketApi";
 function TicketMutate() {
   const ticketId = useParams().id;
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
+
   const [form] = useForm();
 
   const onFinish = (values: CreateTicketDto) => {
     createTicket(values)
       .then((newTicket) => {
         console.log("Ticket created:", newTicket);
-        // Optionally, navigate to the ticket list or details page
+        navigate(`/${newTicket.id}`);
+        form.resetFields();
       })
       .catch((error) => {
         console.error("Error creating ticket:", error);
-        // Optionally, show an error message to the user
+        messageApi.error(t("message.create_ticket_failed"));
       });
-    form.resetFields();
   };
 
   return (
     <Row justify="center" style={{ padding: "14px" }}>
+      {contextHolder}
       <Col xs={24} md={12}>
         <Card
           title={
