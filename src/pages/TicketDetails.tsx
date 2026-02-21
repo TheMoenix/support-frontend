@@ -1,25 +1,14 @@
-import {
-  Button,
-  Card,
-  Col,
-  Descriptions,
-  Row,
-  Select,
-  Tag,
-  message,
-} from "antd";
+import { Card, Col, Descriptions, Row, Tag, message } from "antd";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
-import { getTicket, updateTicket, type Ticket } from "../api/ticketApi";
+import { getTicket, type Ticket } from "../api/ticketApi";
 
 function TicketDetails() {
   const ticketId = useParams().id;
   const { t } = useTranslation();
   const [ticket, setTicket] = useState<Ticket | null>(null);
   const [loading, setLoading] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState<string>("");
-  const [updating, setUpdating] = useState(false);
 
   useEffect(() => {
     if (ticketId) {
@@ -34,34 +23,11 @@ function TicketDetails() {
     try {
       const data = await getTicket(ticketId);
       setTicket(data);
-      setSelectedStatus(data.status);
     } catch (error) {
       console.error("Error fetching ticket:", error);
       message.error("Failed to load ticket details");
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleStatusUpdate = async () => {
-    if (!ticketId || !selectedStatus) return;
-
-    setUpdating(true);
-    try {
-      const updatedTicket = await updateTicket(ticketId, {
-        status: selectedStatus as
-          | "open"
-          | "in-progress"
-          | "resolved"
-          | "closed",
-      });
-      setTicket(updatedTicket);
-      message.success("Status updated successfully");
-    } catch (error) {
-      console.error("Error updating ticket:", error);
-      message.error("Failed to update status");
-    } finally {
-      setUpdating(false);
     }
   };
 
@@ -134,31 +100,6 @@ function TicketDetails() {
               {new Date(ticket.updatedAt).toLocaleString()}
             </Descriptions.Item>
           </Descriptions>
-
-          <div style={{ marginTop: "20px" }}>
-            <h3>{t("updateStatus")}</h3>
-            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-              <Select
-                value={selectedStatus}
-                onChange={setSelectedStatus}
-                style={{ width: 200 }}
-                options={[
-                  { value: "open", label: t("status.open") },
-                  { value: "in-progress", label: t("status.inProgress") },
-                  { value: "resolved", label: t("status.resolved") },
-                  { value: "closed", label: t("status.closed") },
-                ]}
-              />
-              <Button
-                type="primary"
-                onClick={handleStatusUpdate}
-                loading={updating}
-                disabled={selectedStatus === ticket.status}
-              >
-                {t("button.update")}
-              </Button>
-            </div>
-          </div>
         </Card>
       </Col>
     </Row>
